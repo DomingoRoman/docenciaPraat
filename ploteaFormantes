@@ -1,0 +1,223 @@
+# Script para Praat
+# a partir de una tabla de valores de formantes
+# plotea todas las ocurrencias de una vocal
+# dibuja la elipse (sigma 1)
+# pausa para grabar la carta
+
+table = selected("Table")
+
+fem = Extract rows where column (text): "sexo", "is equal to", "f"
+select table
+mas = Extract rows where column (text): "sexo", "is equal to", "m"
+
+select fem
+voc_a_f = Extract rows where column (text): "vocal", "is equal to", "a"
+xaF1f= Get mean: "F1"
+xaF2f = Get mean: "F2"
+
+select fem
+voc_e_f = Extract rows where column (text): "vocal", "is equal to", "e"
+xeF1f = Get mean: "F1"
+xeF2f = Get mean: "F2"
+
+select fem
+voc_i_f = Extract rows where column (text): "vocal", "is equal to", "i"
+xiF1f = Get mean: "F1"
+xiF2f = Get mean: "F2"
+
+select fem
+voc_o_f = Extract rows where column (text): "vocal", "is equal to", "o"
+xoF1f = Get mean: "F1"
+xoF2f = Get mean: "F2"
+
+select fem
+voc_u_f = Extract rows where column (text): "vocal", "is equal to", "u"
+xuF1f = Get mean: "F1"
+xuF2f = Get mean: "F2"
+
+select mas
+voc_a_m = Extract rows where column (text): "vocal", "is equal to", "a"
+xaF1m = Get mean: "F1"
+xaF2m = Get mean: "F2"
+
+select mas
+voc_e_m = Extract rows where column (text): "vocal", "is equal to", "e"
+xeF1m = Get mean: "F1"
+xeF2m = Get mean: "F2"
+
+select mas
+voc_i_m = Extract rows where column (text): "vocal", "is equal to", "i"
+xiF1m = Get mean: "F1"
+xiF2m = Get mean: "F2"
+
+select mas
+voc_o_m = Extract rows where column (text): "vocal", "is equal to", "o"
+xoF1m = Get mean: "F1"
+xoF2m = Get mean: "F2"
+
+select mas
+voc_u_m = Extract rows where column (text): "vocal", "is equal to", "u"
+xuF1m = Get mean: "F1"
+xuF2m = Get mean: "F2"
+
+Erase all
+Line width: 1
+Solid line
+Black
+Select inner viewport: 1, 8, 1, 8
+
+maxf1 = 1400
+minf1 = 100
+maxf2 = 3500
+minf2 = 500
+
+Axes: maxf2, minf2, maxf1, minf1
+
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+
+
+
+Black
+select voc_a_f
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [a] femenina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+
+Green
+select voc_e_f
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [e] femenina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+Red
+select voc_i_f
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [i] femenina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+Blue
+select voc_o_f
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [o] femenina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+
+Purple
+select voc_u_f
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [u] femenina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+
+################### 	masculinas       ################ 
+
+
+Black
+select voc_a_m
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [a] masculina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+
+Green
+select voc_e_m
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [e] masculina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+Red
+select voc_i_m
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [i] masculina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+Blue
+select voc_o_m
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [o] masculina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+
+Purple
+select voc_u_m
+Scatter plot: "F2", maxf2, minf2, "F1", maxf1, minf1, "vocal", 8, "no"
+Draw ellipse (standard deviation): "F2", maxf2, minf2, "F1", maxf1, minf1, 1, "no"
+Marks left every: 1, 100, "yes", "yes", "yes"
+Marks bottom every: 1, 500, "yes", "yes", "yes"
+Draw inner box
+Text top: "no", "Dispersión de vocal [u] masculina"
+Select outer viewport: 0.6, 8.1, 0.7, 8.2
+pause Guarde
+Erase all
+
+select fem
+plus mas
+plus voc_a_f
+plus voc_e_f
+plus voc_i_f
+plus voc_o_f
+plus voc_u_f
+plus voc_a_f
+plus voc_a_m
+plus voc_e_m
+plus voc_i_m
+plus voc_o_m
+plus voc_u_m
+Remove
