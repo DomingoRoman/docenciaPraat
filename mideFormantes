@@ -1,0 +1,99 @@
+# Laboratorio de Fonética de la Facultad de Letras,
+# USACH 2016
+# Este script proporciona la etiqueta y los valores 
+# de F1 y F2
+
+# Presenta el formulario para los datos del informante 
+form Informante 
+	word apellido Bravo
+	natural grupo 1
+	choice emision 1
+	button 1
+	button 2
+	button 3
+	choice sexo 1
+	button f
+	button m
+	comment En “estrato” indique el numero del estrato de puntos con las marcas 
+endform
+
+# Asigna distintos valores dependiendo del sexo del informante
+# para crear el objeto Formant y luego obtener los valores 
+if sexo$ = "m"
+	valor = 5000
+elsif sexo$ = "f"
+	valor = 5500
+endif
+
+# Selecciona el objeto Sound y crea el objeto Formant 
+sonido$ = selected$ ("Sound")
+textgrid$ = selected$ ("TextGrid")
+select Sound 'sonido$'
+To Formant (burg)... 0 5 'valor' 0.025 50
+
+# En el TextGrid, busca el número de marcas, y las etiquetas existentes.
+# En el objeto Formant encuentra los valores para
+# F1, F2, para cada punto 
+# Imprime los datos en la pantalla.
+
+select TextGrid 'textgrid$'
+ndepunto = Get number of points... 1
+
+tabla = Create Table with column names: apellido$, ndepunto, "grupo apellido sexo emision vocal tonicidad F1 F2"
+
+for i to ndepunto
+	select TextGrid 'textgrid$'
+	tiempopunto = Get time of point... 1 'i'
+	etiquetapunto$ = Get label of point... 1 'i'
+	# seleccionar objeto formantes 
+	select Formant 'sonido$'
+	f1 = Get value at time... 1 'tiempopunto' Hertz Linear
+	f2 = Get value at time... 2 'tiempopunto' Hertz Linear
+	select tabla 
+	Set string value: i, "apellido", apellido$
+	Set string value: i, "vocal", etiquetapunto$
+	Set string value: i, "sexo", sexo$
+
+	Set numeric value: i, "grupo", grupo
+	Set numeric value: i, "emision", emision
+	Set numeric value: i, "F1", f1
+	Set numeric value: i, "F2", f2
+endfor
+
+select tabla
+
+for i to ndepunto
+		Set numeric value: i, "tonicidad", 0
+endfor
+
+for i to ndepunto
+	valorvocal$ = Get value: i, "vocal"
+	if valorvocal$ = "a*"
+		Set string value: i, "vocal", "a"
+		Set numeric value: i, "tonicidad", 1
+	endif
+
+	if valorvocal$ = "e*"
+		Set string value: i, "vocal", "e"
+		Set numeric value: i, "tonicidad", 1
+	endif
+
+	if valorvocal$ = "i*"
+		Set string value: i, "vocal", "i"
+		Set numeric value: i, "tonicidad", 1
+	endif
+
+	if valorvocal$ = "o*"
+		Set string value: i, "vocal", "o"
+		Set numeric value: i, "tonicidad", 1
+	endif
+
+	if valorvocal$ = "u*"
+		Set string value: i, "vocal", "u"
+		Set numeric value: i, "tonicidad", 1
+	endif
+endfor
+
+#Selecciona el objeto Formant y lo borra 
+select Formant 'sonido$'
+Remove
